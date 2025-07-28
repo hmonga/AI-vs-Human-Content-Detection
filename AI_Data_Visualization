@@ -1,0 +1,54 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+import pandas as pd
+import matplotlib.patches as mpatches
+
+df = pd.read_csv("ai_human_content_detection_dataset.csv")
+
+#Label Distribution: AI (1) vs Human (0)
+sns.countplot(data=df, x='label', palette='Set2')
+plt.title('Label Distribution: AI (1) vs Human (0)')
+plt.xticks([0, 1], ['Human', 'AI'])
+plt.xlabel('Label')
+plt.ylabel('Count')
+plt.show()
+
+#Word Count vs Character Count
+sns.scatterplot(data=df, x='word_count', y='character_count', hue='label', palette='Set1', alpha=0.6)
+plt.title('Word Count vs Character Count')
+plt.xlabel('Word Count')
+plt.ylabel('Character Count')
+plt.legend(title='Label', labels=['Human', 'AI'])
+plt.show()
+
+#lesch Reading Ease by Content Type
+sns.boxplot(data=df, x='content_type', y='flesch_reading_ease', palette='Set3')
+plt.xticks(rotation=45)
+plt.title('Flesch Reading Ease by Content Type')
+plt.xlabel('Content Type')
+plt.ylabel('Flesch Reading Ease')
+plt.show()
+
+#Predictability Score by Content Type and Label
+sns.boxplot(
+    data=df,
+    x='content_type',
+    y='predictability_score',
+    hue='label',
+    palette={0: 'skyblue', 1: 'salmon'},
+    hue_order=[0, 1]
+)
+plt.xticks(rotation=45)
+plt.title('Predictability Score by Content Type and Label')
+plt.xlabel('Content Type')
+plt.ylabel('Predictability Score')
+
+# Manually fix the legend
+human_patch = mpatches.Patch(color='skyblue', label='Human')
+ai_patch = mpatches.Patch(color='salmon', label='AI')
+plt.legend(handles=[human_patch, ai_patch], title='Label')
+
+plt.show()
+
+
+
