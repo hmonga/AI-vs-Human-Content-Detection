@@ -25,10 +25,14 @@ The dataset contains 1,367 samples labeled as `AI` or `Human`, with various feat
 - **Random Forest AUC:** ~0.52
 
 ## 📎 Files
-- `AI.py`: Main data loading and summary
-- `AI_Data_Tests.py`: Statistical testing
-- `Logistic_Regression.py`: Feature importance and modeling
-- `Model_Evaluation.py`: ROC + Accuracy comparison
+- **AI.py: Dataset loading and initial preprocessing
+- **AI_Data_Cleaning.py: Handles missing values and imputation
+- **AI_Data_Tests.py: Runs statistical tests (t-test, Mann-Whitney U)
+- **AI_Data_Visualization.py: Creates visualizations like boxplots and distributions
+- **Logistic_Regression.py: Fits logistic regression and analyzes coefficients
+- **Random_Forest.py: Trains a Random Forest and ranks feature importance
+- **Model_Eval.py: Compares model performance using ROC/AUC
+- **ai_human_content_detection_dataset.csv: The dataset used throughout the analysis
 
 ## 💡 Future Work
 - Leverage LLM embeddings or attention weights
